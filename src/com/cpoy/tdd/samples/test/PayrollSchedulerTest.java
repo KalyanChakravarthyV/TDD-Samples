@@ -60,15 +60,22 @@ public class PayrollSchedulerTest {
 	 */
 	@Parameters
 	public static Collection<Object[]> sampleTestData() {
+
 		/*
-		 * TODO For now, fill the formatted date(the last param of the
-		 * constructor) as 30 March 2012 and let the tests fail until we find
-		 * out the LWD of the respective cases
+		 * Following test cases have been validated with the corresponding year
+		 * calendars
 		 */
+		
 		return Arrays.asList(new Object[][] { 
 				{ 2012, Calendar.MARCH, "30-03-2012" }, 
-				{ 1970, Calendar.AUGUST, "30-03-2012" },
-				{ 1985, Calendar.MAY, "30-03-2012" }, 
-				{ 2014, Calendar.DECEMBER, "30-03-2012" } });
+				{ 2008, Calendar.FEBRUARY, "29-02-2008" },
+				{ 1970, Calendar.AUGUST, "31-08-1970" },
+				{ 1985, Calendar.MAY, "31-05-1985" },
+				{ 2100, Calendar.FEBRUARY, "26-02-2100" },
+				{ 2000, Calendar.FEBRUARY, "29-02-2000" },
+				{ 2012, Calendar.JUNE, "29-06-2012" },
+				{ 1986, Calendar.FEBRUARY, "28-02-1986" },
+				{ 2014, Calendar.DECEMBER, "31-12-2014" } });
+		
 	}
 }
