@@ -1,0 +1,55 @@
+apply plugin: 'java'
+
+repositories {
+// 	ecl
+	mavenCentral()
+}
+
+dependencies{
+	testCompile  'junit:junit:4.8.2'
+}
+
+sourceCompatibility = 1.5
+version = '1.0'
+
+
+sourceSets {
+	main {
+		java {
+			srcDir 'src'
+		}
+	}
+	
+	test {
+		java {
+			srcDir 'test'
+		}
+	}
+
+}
+
+
+gradle.taskGraph.whenReady {taskGraph ->
+	if (!taskGraph.hasTask(release)) {
+		version += '-SNAPSHOT'
+	}
+}
+
+
+task release << {
+	println "Building project in release mode"
+}
+
+
+clean.doLast {
+	println "The project version is $project.version"
+}
+
+
+jar {
+	manifest {
+		attributes 'Implementation-Title': 'TDD Samples', 'Implementation-Version': version
+	}
+}
+
+
